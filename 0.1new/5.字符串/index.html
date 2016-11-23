@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charTitleset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="1.字符串.js"></script>
+    <script type="text/javascript">
+        'use strict'
+        let emoji = '⚛'
+        console.log(emoji,emoji.length)
+
+        let emojiCode = '\uD83D\uDE02'
+        console.log(emojiCode,emojiCode.length,emojiCode.codePointAt(0),emojiCode.charCodeAt(0))
+
+        let es6EmojiCode = "\u{1f602}"
+        console.log(es6EmojiCode,es6EmojiCode.length,es6EmojiCode.codePointAt(0),es6EmojiCode.charCodeAt(0))
+
+        let str = 'a'
+        console.log(str,str.length)
+
+        var aa = 'AB'.charCodeAt(1)
+        var bb = 'AB'.charAt(0)
+        var cc = 'AB'.codePointAt(1)
+        console.log(aa,bb,cc)
+    </script>
+</body>
+</html>

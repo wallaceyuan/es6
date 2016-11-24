@@ -20,4 +20,10 @@ console.log('ent',ent)
 let set = new Set([1,2,3])
 let aa = [...set]
 
-console.log(aa)
+let arr = [1,2,2,4,6,1,3]
+//数组去重
+
+
+let filter = Array.from(new Set(arr))
+
+console.log(aa,[...new Set(arr)],filter)

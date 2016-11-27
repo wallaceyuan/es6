@@ -1,11 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="http://www.kankanews.com/m/2015ndpd/js/flexible_css.js,flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://skin.kankanews.com/onlive/mline/css/indexonline.css">
+    <title>【直播间】神舟十一号飞船成功着陆 迎接航天英雄回家</title>
+    <script type="text/javascript">
+        var eid = '254';
+        var source = '';
+    </script>
 </head>
 <body>
-    <div id="app"></div>
-    <script src="bundle.js"></script>
+<div class="mask"></div>
+<div class="contentWrapper">
+    <div class="roseLive_head_con ">
+        <div class="roseLive_head">
+        </div>
+    </div>
+    <div class="timeCollection tip"></div>
+    <div class="ul_content">
+        <div id="scroller">
+            <div class="maskload"></div>
+            <div class="pulldown">
+                <span class="icon"></span><span class="label">下拉刷新...</span>
+            </div>
+            <div class="smalltxt">
+                <div class="text"><span>核心提示：</span>在完成了一个月的太空生活后，11月17日12时41分，神舟十一号飞船与天宫二号空间实验室成功实施分离，航天员景海鹏、陈冬踏上返回之旅。14时03分，神舟十一号载人飞船平安降落在主着陆场！天宫二号和神舟十一号载人飞行任务取得圆满成功。</div>
+            </div>
+            <div class="topW">
+                <div class="ui-newstips-wrap tipBand">
+                    <div class="ui-newstips">
+                        <i></i><div>新消息</div><span class="ui-badge-num">123</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fresh">
+            </div>
+            <div id="j_pullLoader" class="more_btnbox hide">
+                <div class="more_btn_loading">
+                    <span class="loadingbtn"></span><span class="more_btn">上拉加载更多</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="canvas">
+    <em><img src="http://skin.kankanews.com/onlive/mline/images/close.png"></img></em>
+    <div class="ctrlbar">
+        <span id="J-curPage">1</span><span id="J-pageCount">/3</span>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://www.kankanews.com/m/pub/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://skin.kankanews.com/v5/mplive/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://skin.kankanews.com/onlive/mline/js/lazyload.min.js"></script>
+<script type="text/javascript">
+    var eid = '254';var isclose = '0';var color ='0';
+    var streamid,myScroll,streamurl;
+    var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if(isclose){
+        $('.mask').css('display','none');
+        $('.contentWrapper').css('display','block');
+    }
+</script>
+<script type="text/javascript" src="./bundle.js"></script>
+<script type="text/javascript" src="http://skin.kankanews.com/onlive/mline/js/device.js"></script>
+<script type="text/javascript" src="http://skin.kankanews.com/onlive/mline/js/img_v4.js"></script>
+<script type="text/javascript" src="http://skin.kankanews.com/onlive/mline/js/iscroll-probe.js"></script>
+
+<!-- 微信分享 -->
+<script type="text/javascript">
+    var url = 'http://www.kankanews.com/list/onlive_m/'+eid;
+    var info={
+        url:url,
+        title:'【直播间】神舟十一号飞船成功着陆 迎接航天英雄回家｜看看新闻Knews',
+        titlepic :"http://p3.img.kksmg.com/image/2016/05/26/843c2f55d863a59196e7f6c10a2c53d7.jpg",
+        des : "在完成了一个月的太空生活后，11月17日12时41分，神舟十一号飞船与天宫二号空间实验室成功实施分离，航天员景海鹏、陈冬踏上返回之旅。14时03分，神舟十一号载人飞船平安降落在主着陆场！天宫二号和神舟十一号载人飞行任务取得圆满成功。"
+    }
+    function callback(data, success, dataAndEvents) {
+        var script = document.createElement("script");
+        if (!dataAndEvents) {
+            script.async = "async";
+        }
+        if (success) {
+            script.onload = success;
+        }
+        script.src = data;
+        document.body.appendChild(script);
+    }
+    if(/MicroMessenger/.test(navigator.userAgent)){
+        callback("http://skin.kankanews.com/mobilev2/js/weixinv2.js",function(){
+            wxshare(info);
+        });
+    }
+</script>
 </body>
 </html>

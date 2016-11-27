@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server",
+    "dev": "./node_modules/.bin/webpack-dev-server --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -21,6 +21,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "html-webpack-plugin": "^2.24.1",
     "open-browser-webpack-plugin": "0.0.3",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   }
 }

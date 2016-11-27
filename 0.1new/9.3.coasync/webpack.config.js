@@ -1,7 +1,8 @@
 var path = require('path');
+// 产出html模板
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
-
+var openBrowserWebpackPlugin = require('open-browser-webpack-plugin');
 var jqueryPath = path.join(__dirname,'./node_modules/jquery/dist/jquery.js')
 
 function rewriteUrl(replacePath) {
@@ -18,7 +19,7 @@ module.exports = {
         stats:{colors:true},
         ports:8080,
         hot: true,
-        contentBase:'build',
+        contentBase:'build'/*,
         proxy: [
             {
                 path: /^\/api\/(.*)/,
@@ -26,17 +27,24 @@ module.exports = {
                 rewrite: rewriteUrl('/$1\.json'),
                 changeOrigin: true
             }
-        ]
+        ]*/
     },
     entry: {
-        index:path.resolve(__dirname, 'src/index.js'),
-        vendor:['jquery']
+      index: [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080',
+        path.resolve(__dirname, './test.js')
+      ]
     },
+/*    entry: [
+      'webpack/hot/dev-server',
+      path.resolve(__dirname, 'src/index.js')
+    ],*/
     output: { //配置打包结果     Object
         //定义输出文件路径
         path: path.resolve(__dirname, 'build'),
         //指定打包文件名称
-        filename: '[name].js'
+        filename: 'bundle.js'
     },
     resolve: {
         extension: ['', '.jsx', '.js', '.json'],
@@ -46,6 +54,7 @@ module.exports = {
         }
     },
     module: {
+        noParse: [jqueryPath],
         loaders:[
             {
                 test:/\.js$/,
@@ -54,11 +63,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'zhufeng-react',//标题
-            template: './src/index.html', //模板文件
-            filename:'./index.html' //产出后的文件名称
-        }),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+        new webpack.HotModuleReplacementPlugin(),
+        new openBrowserWebpackPlugin({ url: 'http://localhost:8080' })
+        //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     ]
 };

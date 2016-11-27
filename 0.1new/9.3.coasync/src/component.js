@@ -1,1 +1,1 @@
-export let name = 'zfpx';
+export let name = 'zfpxss';

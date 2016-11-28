@@ -41,3 +41,18 @@ ajacpromise
     .catch(err => {
         console.error(err)
     })
+
+
+
+var orderList = function () {
+    console.log('orderList')
+    console.log(this)
+}
+
+function aaa() {
+    console.log('aaa')
+    console.log(this)
+}
+orderList(111)
+console.log('this',this)
+aaa.apply(this,[1])

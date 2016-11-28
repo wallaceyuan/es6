@@ -3,6 +3,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var openBrowserWebpackPlugin = require('open-browser-webpack-plugin');
+var node_modules = path.resolve(__dirname, 'node_modules');
 var jqueryPath = path.join(__dirname,'./node_modules/jquery/dist/jquery.js')
 
 function rewriteUrl(replacePath) {
@@ -36,10 +37,6 @@ module.exports = {
         path.resolve(__dirname, './src/ini_v8.js')
       ]
     },
-/*    entry: [
-      'webpack/hot/dev-server',
-      path.resolve(__dirname, 'src/index.js')
-    ],*/
     output: { //配置打包结果     Object
         //定义输出文件路径
         path: path.resolve(__dirname, 'build'),
@@ -57,8 +54,9 @@ module.exports = {
         noParse: [jqueryPath],
         loaders:[
             {
-                test:/\.js$/,
-                loader:'babel-loader'
+                test: /\.js[x]?$/,
+                loaders: ['babel'],
+                exclude: path.resolve(__dirname, 'node_modules')
             }
         ]
     },

@@ -1,6 +1,6 @@
-/**
- * Created by yuan on 2015/5/21.
- */
+import {name,component} from './component'
+import './indexonline.css';
+console.log(name,component())
 
 !function() {
 	let b = {
@@ -11,11 +11,7 @@
 		color :color, date:[], headDate:[], videoSt:'on', done:true, load :false,
 		vidoepic:'http://act.shanghaicity.openservice.kankanews.com/iloveshanghai/2015/live/images/play.png'
 	};
-	var load = () =>{
-		console.log('load')
-	}
 	let viewData = ()=>{
-		console.log('viewData')
 		var e = 0, l = 0, i = 0, g = 0, f = 0, m = 0;
 		var j = window, h = document, k = h.documentElement;
 		e = k.clientWidth || h.body.clientWidth || 0;
@@ -26,7 +22,9 @@
 		m = Math.max(h.body.scrollHeight, k.scrollHeight || 0, l);
 		return {scrollTop: g,scrollLeft: i,documentWidth: f,documentHeight: m,viewWidth: e,viewHeight: l};
 	}
-	let timeBar = (param)=>{
+    console.log('viewData')
+
+    let timeBar = (param)=>{
 		$('.topW  .live_list').each((index,item)=>{
 			var headDate = $(item).attr('date');
 			if($.inArray(headDate, b.headDate) == -1){
@@ -341,7 +339,7 @@
 			}
 			if(newhtml.find($('img')).length == 1){
 				newhtml.find($('img'))[0].onload = () =>{
-					console.log('loadloadloadloadloadloadload')
+					console.log('loadload')
 					this.loadImage()
 				}
 			}

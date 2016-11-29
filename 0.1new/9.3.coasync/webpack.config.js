@@ -1,8 +1,9 @@
 var path = require('path');
 // 产出html模板
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var openBrowserWebpackPlugin = require('open-browser-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var node_modules = path.resolve(__dirname, 'node_modules');
 var jqueryPath = path.join(__dirname,'./node_modules/jquery/dist/jquery.js')
 
@@ -20,7 +21,7 @@ module.exports = {
         stats:{colors:true},
         ports:8080,
         hot: true,
-        contentBase:'build'/*,
+        contentBase:'build',
         proxy: [
             {
                 path: /^\/api\/(.*)/,
@@ -28,14 +29,14 @@ module.exports = {
                 rewrite: rewriteUrl('/$1\.json'),
                 changeOrigin: true
             }
-        ]*/
+        ]
     },
     entry: {
-      index: [
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080',
-        path.resolve(__dirname, './src/ini_v8.js')
-      ]
+        index: [
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost:8080',
+            path.resolve(__dirname, './src/ini_v8.js')
+        ]
     },
     output: { //配置打包结果     Object
         //定义输出文件路径
@@ -55,14 +56,27 @@ module.exports = {
         loaders:[
             {
                 test: /\.js[x]?$/,
-                loaders: ['babel'],
-                exclude: path.resolve(__dirname, 'node_modules')
+                loaders: ['babel']
+            },
+            {
+              test: /\.css/,
+              loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new openBrowserWebpackPlugin({ url: 'http://localhost:8080' })
-        //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+        new webpack.NoErrorsPlugin(),
+        definePlugin,
+        new openBrowserWebpackPlugin({ url: 'http://localhost:8080' }),
+        new HtmlWebpackPlugin({
+          title: 'zhufeng-react',
+          template: './src/index.html',
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+        new ExtractTextPlugin("main.css", {
+            allChunks: true,
+            disable: false
+        }),
     ]
 };
